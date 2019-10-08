@@ -1,24 +1,35 @@
 <ng-template #dialog let-modal>
   <div class="modal-body">
-    <button type="button" class="close" (click)="modal.dismiss()">
+    <button type="button" class="close modal-close" (click)="modal.dismiss()">
       <span>&times;</span>
     </button>
-    <img src="{{ imagePath }}">
+    <img class="modal-image" src="{{ imagePath }}">
   </div>
 </ng-template>
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
-  <div>
-    <label for="search">
-      NASA Image Search
-    </label>
-    <input id="search" type="text" formControlName="search">
+<div class="container">
+  <div class="align-items-center justify-content-center">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)" class="search">
+      <div class="form-group">
+        <label for="search">
+          <b>NASA Image Search</b>
+        </label>
+        <div class="input-control">
+          <input id="search" type="text" class="form-control input-field" formControlName="search">
+          <button class="btn btn-primary form-button" type="submit">Go</button>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="imagePath">
+      <p><i>Showing 1 of {{ totalResults }} results</i></p>
+      <div class="result" (click)="openDialog(dialog)">
+        <img class="thumbnail" src="{{ imagePath }}">
+        <div>
+          <span class="image-name">{{ imageName }}</span>
+          <br>
+          <p class="image-time">{{ imageTime }}</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <button class="button" type="submit">Go</button>
-  <div *ngIf="imagePath">
-    <p>Showing 1 of {{ totalResults }} results</p>
-    <img src="{{ imagePath }}">
-    <p (click)="openDialog(dialog)">{{ imageName }}</p>
-    <p>{{ imageTime }}</p>
-  </div>
-</form>
+</div>

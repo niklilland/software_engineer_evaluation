@@ -23,7 +23,7 @@ export class SearchComponent {
     private modalService: NgbModal
   ) {
     this.searchForm = this.formBuilder.group({
-      'search': new FormControl('jupiter', [Validators.required]),
+      'search': new FormControl('', [Validators.required]),
     });
   }
 
@@ -40,6 +40,6 @@ export class SearchComponent {
   }
 
   openDialog(dialog) {
-    this.modalService.open(dialog);
+    this.modalService.open(dialog, { size: 'lg' });
   }
 }
