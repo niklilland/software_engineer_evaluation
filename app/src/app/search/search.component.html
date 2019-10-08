@@ -1,0 +1,9 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+    <div>
+      <label for="search">
+        NASA Image Search
+      </label>
+      <input id="search" type="text" formControlName="search">
+    </div>
+    <button class="button" type="submit">Go</button>
+  </form>
