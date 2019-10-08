@@ -17,6 +17,6 @@ export class ApiService {
   }
 
   getImages(term) {
-    return this.http.get(`https://images-api.nasa.gov/search?media_type=image&q=${term}`)
+    return this.http.get(`https://images-api.nasa.gov/search?media_type=image&q=${term}`);
   }
 }
